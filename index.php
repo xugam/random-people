@@ -1,3 +1,26 @@
+<?php
+  $json = file_get_contents("persons.json");
+  $data = json_decode($json,true);
+  
+  // echo "<pre>";
+  //   // var_dump($data);
+  //   //var_dump($json);
+
+  //   // foreach($data as $element){
+  //   //   echo "<hr/>";
+  //   //   echo($element["name"]["title"]);
+  //   //   echo "<br>";
+  //   //   echo($element["name"]["first"]);
+  //   //   echo "<br>";
+  //   //   echo($element["name"]["last"]);
+  //   //   echo "<br>";
+  //   //   echo "<hr/>";
+
+  //   // }
+
+  // echo "</pre>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,12 +36,33 @@
   </script>
 </head>
 
-<body class="bg-dark">
-  <div class="container">
+<body class="bg-light">
+  <div class="container bg-gradient">
     <div class="mt-4 mb-5 d-flex justify-content-between align-items-center">
 
-      <h1 class="text-white">Random People Here! </h1>
+      <h1 class="text-light">Random People Here! </h1>
 
+      
+    </div>
+    <div class="table">
+    <table class="table table-dark table-striped-columns table-hover table-bordered border-primary ">
+  <thead class ="table-info">
+    <tr>
+      <th scope="col">Profile</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php  foreach($data as $element):?>
+      <tr>
+        <th scope="row"><img src="<?php echo $element["picture"]["large"];?>"></th>
+        <td><?php echo $element["name"]["first"];?></td>
+        <td><?php echo $element["email"];?></td>
+      </tr>
+    <?php endforeach;?>
+  </tbody>
+</table>
     </div>
 
 
